@@ -1,4 +1,4 @@
-package mongodbDataInit.mongodbDataInit;
+package com.ecommerce.mongodbDataInit;
 
 import java.util.Date;
 

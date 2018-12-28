@@ -1,0 +1,51 @@
+spring:
+  profiles: default
+server:
+  port: 8010
+eureka:
+  instance:
+    hostname: eureka-primary
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka-primary:8010/eureka/
+---
+spring:
+  profiles: primary
+server:
+  port: 8011
+eureka:
+  instance:
+    hostname: eureka-primary
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-secondary:8012/eureka/,http://eureka-tertiary:8013/eureka/
+---
+spring:
+  profiles: secondary
+server:
+  port: 8012
+eureka:
+  instance:
+    hostname: eureka-secondary
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-primary:8011/eureka/,http://eureka-tertiary:8013/eureka/
+---
+spring:
+  profiles: tertiary
+server:
+  port: 8013
+eureka:
+  instance:
+    hostname: eureka-tertiary
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-primary:8011/eureka/,http://eureka-secondary:8012/eureka/

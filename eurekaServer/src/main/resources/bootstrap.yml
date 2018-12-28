@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: ecom-eureka-server
+  profiles: default
+---
+spring:
+  application:
+    name: ecom-eureka-server
+  profiles: primary
+---
+spring:
+  application:
+    name: ecom-eureka-server
+  profiles: secondary
+---
+spring:
+  application:
+    name: ecom-eureka-server
+  profiles: tertiary

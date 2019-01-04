@@ -12,8 +12,3 @@ spring:
   application:
     name: ecom-eureka-server
   profiles: secondary
----
-spring:
-  application:
-    name: ecom-eureka-server
-  profiles: tertiary

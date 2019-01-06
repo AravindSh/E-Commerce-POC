@@ -32,7 +32,7 @@ public class MongodbDataInit
     	entrySetup();
     	MongoDatabase database = mongoClient.getDatabase("e_commerce_db");
 		MongoCollection<Document> productCatalogCollection = database.getCollection("product_catalog");
-		//initProductCatalog(productCatalogCollection);
+		initProductCatalog(productCatalogCollection);
     	displayProductCatalog(productCatalogCollection);
     	exitSetup();
     }
@@ -44,10 +44,10 @@ public class MongodbDataInit
 
 	private static void initProductCatalog(MongoCollection<Document> prodCatCollection) {
 		List<ProductCatalog> productCatalogs = Arrays.asList(new ProductCatalog(10, 100, "book", new BookDetails("Java", "Herbert Schildt")),
-				new ProductCatalog(15, 150, "book", new BookDetails("The Monk Who Sold his Ferari", "Robin Sharma")),
-				new ProductCatalog(25, 200, "book", new BookDetails("Rich Dad Poor Dad", "Robert Kiyosaki")),
-				new ProductCatalog(5, 2000, "book", new BookDetails("Harry Potter", "J K Rowling")),
-				new ProductCatalog(50, 1000, "book", new BookDetails("Bhagwad Gita", "Krishna"))
+				new ProductCatalog(15, 150, "books", new BookDetails("The Monk Who Sold his Ferari", "Robin Sharma")),
+				new ProductCatalog(25, 200, "books", new BookDetails("Rich Dad Poor Dad", "Robert Kiyosaki")),
+				new ProductCatalog(5, 2000, "books", new BookDetails("Harry Potter", "J K Rowling")),
+				new ProductCatalog(50, 1000, "books", new BookDetails("Bhagwad Gita", "Krishna"))
 				);
 		for(ProductCatalog productCatalog: productCatalogs) {
 			Document productCatalogDoc = new Document()

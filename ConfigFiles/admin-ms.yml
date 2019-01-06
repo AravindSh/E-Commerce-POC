@@ -1,3 +1,5 @@
+spring:
+  profiles: default
 eureka:
   client:
     service-url:
@@ -14,3 +16,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka-primary:8011/eureka/,http://eureka-secondary:8012/eureka/
+mongo:
+  host: localhost
+  port: 27017
+  db: e_commerce_db

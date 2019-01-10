@@ -32,7 +32,7 @@ public class MongodbDataInit
     	entrySetup();
     	MongoDatabase database = mongoClient.getDatabase("e_commerce_db");
 		MongoCollection<Document> productCatalogCollection = database.getCollection("product_catalog");
-		initProductCatalog(productCatalogCollection);
+		//initProductCatalog(productCatalogCollection);
     	displayProductCatalog(productCatalogCollection);
     	exitSetup();
     }

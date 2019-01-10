@@ -18,5 +18,26 @@ public class AdminServiceImpl implements AdminService {
 	public List<ProductCatalog> getAllProductsByType(String type) {
 		return adminDao.getAllProductsByType(type);
 	}
+
+	@Override
+	public void deleteProuctById(String id) {
+		adminDao.deleteProuctById(id);
+		
+	}
+
+	@Override
+	public ProductCatalog getByProductId(String id) {
+		return adminDao.getByProductId(id);
+	}
+	
+	@Override
+	public void saveProduct(ProductCatalog productCatalog) {
+		adminDao.saveProduct(productCatalog);
+	}
+	
+	@Override
+	public void updateProduct(ProductCatalog productCatalog) {
+		adminDao.updateProduct(productCatalog);
+	}
 	
 }

@@ -6,8 +6,8 @@ public class ProductCatalog {
 	
 	@JsonProperty("_id")
 	private ObjectId id;
-	private int quantity;
-	private double unitPrice;
+	private Integer quantity;
+	private Double unitPrice;
 	private String type;
 	private BookDetails bookDetails;
 	
@@ -15,7 +15,7 @@ public class ProductCatalog {
 		super();
 	}
 
-	public ProductCatalog(int quantity, double unitPrice, String type, BookDetails bookDetails) {
+	public ProductCatalog(Integer quantity, Double unitPrice, String type, BookDetails bookDetails) {
 		super();
 		this.quantity = quantity;
 		this.unitPrice = unitPrice;
@@ -29,16 +29,16 @@ public class ProductCatalog {
 	public void setId(ObjectId id) {
 		this.id = id;
 	}
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	public double getUnitPrice() {
+	public Double getUnitPrice() {
 		return unitPrice;
 	}
-	public void setUnitPrice(double unitPrice) {
+	public void setUnitPrice(Double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 	public String getType() {

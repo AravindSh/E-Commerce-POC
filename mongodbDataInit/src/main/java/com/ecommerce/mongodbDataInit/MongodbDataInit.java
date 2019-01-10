@@ -43,7 +43,7 @@ public class MongodbDataInit
 	}
 
 	private static void initProductCatalog(MongoCollection<Document> prodCatCollection) {
-		List<ProductCatalog> productCatalogs = Arrays.asList(new ProductCatalog(10, 100, "book", new BookDetails("Java", "Herbert Schildt")),
+		List<ProductCatalog> productCatalogs = Arrays.asList(new ProductCatalog(10, 100, "books", new BookDetails("Java", "Herbert Schildt")),
 				new ProductCatalog(15, 150, "books", new BookDetails("The Monk Who Sold his Ferari", "Robin Sharma")),
 				new ProductCatalog(25, 200, "books", new BookDetails("Rich Dad Poor Dad", "Robert Kiyosaki")),
 				new ProductCatalog(5, 2000, "books", new BookDetails("Harry Potter", "J K Rowling")),

@@ -7,11 +7,11 @@ import com.ecommerce.admin.entity.ProductCatalog;
 public interface AdminDao {
 	List<ProductCatalog> getAllProductsByType(String type);
 
-	void deleteProuctById(String id);
+	boolean deleteProuctById(String id);
 
 	ProductCatalog getByProductId(String id);
 
-	void saveProduct(ProductCatalog productCatalog);
+	ProductCatalog saveProduct(ProductCatalog productCatalog);
 
-	void updateProduct(ProductCatalog productCatalog);
+	ProductCatalog updateProduct(ProductCatalog productCatalog);
 }

@@ -6,8 +6,8 @@ import com.ecommerce.admin.entity.ProductCatalog;
 
 public interface AdminService {
 	List<ProductCatalog> getAllProductsByType(String type);
-	public void deleteProuctById(String id);
+	boolean deleteProuctById(String id);
 	ProductCatalog getByProductId(String id);
-	void saveProduct(ProductCatalog productCatalog);
-	void updateProduct(ProductCatalog productCatalog);
+	ProductCatalog saveProduct(ProductCatalog productCatalog);
+	ProductCatalog updateProduct(ProductCatalog productCatalog);
 }

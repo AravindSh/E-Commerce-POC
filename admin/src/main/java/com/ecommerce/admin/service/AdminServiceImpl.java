@@ -20,8 +20,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void deleteProuctById(String id) {
-		adminDao.deleteProuctById(id);
+	public boolean deleteProuctById(String id) {
+		return adminDao.deleteProuctById(id);
 		
 	}
 
@@ -31,13 +31,13 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public void saveProduct(ProductCatalog productCatalog) {
-		adminDao.saveProduct(productCatalog);
+	public ProductCatalog saveProduct(ProductCatalog productCatalog) {
+		return adminDao.saveProduct(productCatalog);
 	}
 	
 	@Override
-	public void updateProduct(ProductCatalog productCatalog) {
-		adminDao.updateProduct(productCatalog);
+	public ProductCatalog updateProduct(ProductCatalog productCatalog) {
+		return adminDao.updateProduct(productCatalog);
 	}
 	
 }

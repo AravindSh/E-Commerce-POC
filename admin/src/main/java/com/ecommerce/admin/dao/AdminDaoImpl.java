@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.DeleteResult;
 
 @Repository
 public class AdminDaoImpl implements AdminDao {
@@ -28,13 +29,13 @@ public class AdminDaoImpl implements AdminDao {
 	private String prodCatCollection = "product_catalog";
 	
 	//Constants
-	private String TYPE = "type";
-	private String QUANTITY = "quantity";
-	private String UNIT_PRICE= "unitPrice";
-	private String BOOK_DETAILS = "bookDetails";
-	private String BOOK_NAME = "bookName";
-	private String AUTHOR = "author";
-	private String MONODB_ID = "_id";
+	private final String TYPE = "type";
+	private final String QUANTITY = "quantity";
+	private final String UNIT_PRICE= "unitPrice";
+	private final String BOOK_DETAILS = "bookDetails";
+	private final String BOOK_NAME = "bookName";
+	private final String AUTHOR = "author";
+	private final String MONODB_ID = "_id";
 	
 	@PostConstruct
 	public void init() {
@@ -65,28 +66,34 @@ public class AdminDaoImpl implements AdminDao {
 	}
 	
 	@Override
-	public void deleteProuctById(String id) {
+	public boolean deleteProuctById(String id) {
+		boolean isDeleted = false;
 		Document filter = new Document(MONODB_ID, new ObjectId(id));
 		Document found = collection.find(filter).first();
 		if(null != found) {
-			collection.deleteOne(filter);
+			DeleteResult deleteOne = collection.deleteOne(filter);
+			if(deleteOne.getDeletedCount() > 0) {
+				isDeleted =  true;
+			}
 		}
-		
+		return isDeleted;
 	}
 	
 	@Override
 	public ProductCatalog getByProductId(String id) {
 		Document filter = new Document(MONODB_ID, new ObjectId(id));
 		Document found = collection.find(filter).first();
-		ProductCatalog productCatalog = new ProductCatalog();
 		if(found != null) {
+			ProductCatalog productCatalog = new ProductCatalog();
 			productCatalog = documentToProdCat(found.toJson());
+			return productCatalog;
+		}else {
+			return null;
 		}
-		return productCatalog;
 	}
 	
 	@Override
-	public void saveProduct(ProductCatalog productCatalog) {
+	public ProductCatalog saveProduct(ProductCatalog productCatalog) {
 		Document document = new Document()
 				.append(QUANTITY, productCatalog.getQuantity())
 				.append(UNIT_PRICE, productCatalog.getUnitPrice())
@@ -95,10 +102,16 @@ public class AdminDaoImpl implements AdminDao {
 							.append(BOOK_NAME, productCatalog.getBookDetails().getBookName())
 							.append(AUTHOR, productCatalog.getBookDetails().getAuthor()));
 		collection.insertOne(document);
+		Document found = collection.find(document).first();
+		if(found != null) {
+			return documentToProdCat(found.toJson());
+		}else {
+			return null;
+		}
 	}
 	
 	@Override
-	public void updateProduct(ProductCatalog productCatalog) {
+	public ProductCatalog updateProduct(ProductCatalog productCatalog) {
 		Document found = collection.find(new Document(MONODB_ID, new ObjectId(productCatalog.getId().getOid()))).first();
 		if(null != found) {
 			Document updatedVal = new Document();
@@ -122,6 +135,10 @@ public class AdminDaoImpl implements AdminDao {
 			}
 			Document updateOp = new Document("$set", updatedVal);
 			collection.updateOne(found, updateOp);
+			Document updatedDoc = collection.find(new Document(MONODB_ID, new ObjectId(productCatalog.getId().getOid()))).first();
+			return documentToProdCat(updatedDoc.toJson());
+		}else {
+			return null;
 		}
 	}
 

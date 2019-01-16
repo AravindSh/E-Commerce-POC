@@ -1,4 +1,4 @@
-package ecommerce;
+package com.ecommerce.user.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;

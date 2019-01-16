@@ -1,0 +1,12 @@
+---
+spring:
+  application:
+    name: user-ms
+  cloud:
+    config:
+      uri: http://localhost:8001
+      fail-fast: true
+eureka:
+  instance:
+    metadataMap:
+      instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}

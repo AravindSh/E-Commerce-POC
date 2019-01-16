@@ -1,4 +1,4 @@
-package ecommerce;
+package com.ecommerce.user.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -6,13 +6,13 @@ import java.util.List;
 
 
 /**
- * The persistent class for the customer database table.
+ * The persistent class for the users database table.
  * 
  */
 @Entity
-@Table(name="customer")
-@NamedQuery(name="Customer.findAll", query="SELECT c FROM Customer c")
-public class Customer implements Serializable {
+@Table(name="users")
+@NamedQuery(name="Users.findAll", query="SELECT u FROM Users u")
+public class Users implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -47,20 +47,20 @@ public class Customer implements Serializable {
 	@Column(nullable=false, length=6)
 	private String zip;
 
+	//bi-directional many-to-one association to OrderDetails
+	@OneToMany(mappedBy="user")
+	private List<OrderDetails> orderDetails;
+
+	//bi-directional many-to-one association to ShoppingCartItems
+	@OneToMany(mappedBy="user")
+	private List<ShoppingCartItems> shoppingCartItems;
+
 	//bi-directional many-to-one association to StateTax
 	@ManyToOne
 	@JoinColumn(name="state", nullable=false)
 	private StateTax stateTax;
 
-	//bi-directional many-to-one association to OrderDetail
-	@OneToMany(mappedBy="customer")
-	private List<OrderDetail> orderDetails;
-
-	//bi-directional many-to-one association to ShoppingCartItem
-	@OneToMany(mappedBy="customer")
-	private List<ShoppingCartItem> shoppingCartItems;
-
-	public Customer() {
+	public Users() {
 	}
 
 	public Integer getUserid() {
@@ -143,56 +143,56 @@ public class Customer implements Serializable {
 		this.zip = zip;
 	}
 
+	public List<OrderDetails> getOrderDetails() {
+		return this.orderDetails;
+	}
+
+	public void setOrderDetails(List<OrderDetails> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
+
+	public OrderDetails addOrderDetail(OrderDetails orderDetail) {
+		getOrderDetails().add(orderDetail);
+		orderDetail.setUser(this);
+
+		return orderDetail;
+	}
+
+	public OrderDetails removeOrderDetail(OrderDetails orderDetail) {
+		getOrderDetails().remove(orderDetail);
+		orderDetail.setUser(null);
+
+		return orderDetail;
+	}
+
+	public List<ShoppingCartItems> getShoppingCartItems() {
+		return this.shoppingCartItems;
+	}
+
+	public void setShoppingCartItems(List<ShoppingCartItems> shoppingCartItems) {
+		this.shoppingCartItems = shoppingCartItems;
+	}
+
+	public ShoppingCartItems addShoppingCartItem(ShoppingCartItems shoppingCartItem) {
+		getShoppingCartItems().add(shoppingCartItem);
+		shoppingCartItem.setUser(this);
+
+		return shoppingCartItem;
+	}
+
+	public ShoppingCartItems removeShoppingCartItem(ShoppingCartItems shoppingCartItem) {
+		getShoppingCartItems().remove(shoppingCartItem);
+		shoppingCartItem.setUser(null);
+
+		return shoppingCartItem;
+	}
+
 	public StateTax getStateTax() {
 		return this.stateTax;
 	}
 
 	public void setStateTax(StateTax stateTax) {
 		this.stateTax = stateTax;
-	}
-
-	public List<OrderDetail> getOrderDetails() {
-		return this.orderDetails;
-	}
-
-	public void setOrderDetails(List<OrderDetail> orderDetails) {
-		this.orderDetails = orderDetails;
-	}
-
-	public OrderDetail addOrderDetail(OrderDetail orderDetail) {
-		getOrderDetails().add(orderDetail);
-		orderDetail.setCustomer(this);
-
-		return orderDetail;
-	}
-
-	public OrderDetail removeOrderDetail(OrderDetail orderDetail) {
-		getOrderDetails().remove(orderDetail);
-		orderDetail.setCustomer(null);
-
-		return orderDetail;
-	}
-
-	public List<ShoppingCartItem> getShoppingCartItems() {
-		return this.shoppingCartItems;
-	}
-
-	public void setShoppingCartItems(List<ShoppingCartItem> shoppingCartItems) {
-		this.shoppingCartItems = shoppingCartItems;
-	}
-
-	public ShoppingCartItem addShoppingCartItem(ShoppingCartItem shoppingCartItem) {
-		getShoppingCartItems().add(shoppingCartItem);
-		shoppingCartItem.setCustomer(this);
-
-		return shoppingCartItem;
-	}
-
-	public ShoppingCartItem removeShoppingCartItem(ShoppingCartItem shoppingCartItem) {
-		getShoppingCartItems().remove(shoppingCartItem);
-		shoppingCartItem.setCustomer(null);
-
-		return shoppingCartItem;
 	}
 
 }

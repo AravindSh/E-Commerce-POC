@@ -11,8 +11,8 @@ import java.util.List;
  */
 @Entity
 @Table(name="order_details")
-@NamedQuery(name="OrderDetail.findAll", query="SELECT o FROM OrderDetail o")
-public class OrderDetail implements Serializable {
+@NamedQuery(name="OrderDetails.findAll", query="SELECT o FROM OrderDetails o")
+public class OrderDetails implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,11 +32,6 @@ public class OrderDetail implements Serializable {
 	@Column(name="rcv_zip", length=6)
 	private String rcvZip;
 
-	//bi-directional many-to-one association to Customer
-	@ManyToOne
-	@JoinColumn(name="od_userid")
-	private Customer customer;
-
 	//bi-directional many-to-one association to ShippingType
 	@ManyToOne
 	@JoinColumn(name="od_shipping_type_id")
@@ -47,11 +42,16 @@ public class OrderDetail implements Serializable {
 	@JoinColumn(name="rcv_state")
 	private StateTax stateTax;
 
+	//bi-directional many-to-one association to Users
+	@ManyToOne
+	@JoinColumn(name="od_userid")
+	private Users user;
+
 	//bi-directional many-to-one association to PurchaseHistory
 	@OneToMany(mappedBy="orderDetail")
 	private List<PurchaseHistory> purchaseHistories;
 
-	public OrderDetail() {
+	public OrderDetails() {
 	}
 
 	public Integer getOrderId() {
@@ -94,14 +94,6 @@ public class OrderDetail implements Serializable {
 		this.rcvZip = rcvZip;
 	}
 
-	public Customer getCustomer() {
-		return this.customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
 	public ShippingType getShippingType() {
 		return this.shippingType;
 	}
@@ -116,6 +108,14 @@ public class OrderDetail implements Serializable {
 
 	public void setStateTax(StateTax stateTax) {
 		this.stateTax = stateTax;
+	}
+
+	public Users getUser() {
+		return this.user;
+	}
+
+	public void setUser(Users user) {
+		this.user = user;
 	}
 
 	public List<PurchaseHistory> getPurchaseHistories() {

@@ -61,4 +61,6 @@ alter table customer add constraint state_fk foreign key(state) references state
 
 alter table order_details add constraint shipping_fk foreign key(od_shipping_type_id) references shipping_type(shipping_type_id);
 
+alter table customer rename to Users;
+
 

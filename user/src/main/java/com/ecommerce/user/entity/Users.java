@@ -2,6 +2,9 @@ package com.ecommerce.user.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.ecommerce.user.dto.UserDto;
+
 import java.util.List;
 
 
@@ -12,6 +15,12 @@ import java.util.List;
 @Entity
 @Table(name="users")
 @NamedQuery(name="Users.findAll", query="SELECT u FROM Users u")
+@NamedNativeQuery(name = "Users.getUserById", query = "SELECT userid, address, city, first_name, last_name, zip, state FROM users WHERE userid=:userid", 
+					resultSetMapping = "UserDtoMappings")
+@SqlResultSetMapping(name = "UserDtoMappings", classes = @ConstructorResult(targetClass = UserDto.class, columns = {
+		@ColumnResult(name = "userid"), @ColumnResult(name = "address"), @ColumnResult(name = "city"),
+		@ColumnResult(name = "first_name"), @ColumnResult(name = "last_name"), @ColumnResult(name = "zip"),
+		@ColumnResult(name = "state") }))
 public class Users implements Serializable {
 	private static final long serialVersionUID = 1L;
 

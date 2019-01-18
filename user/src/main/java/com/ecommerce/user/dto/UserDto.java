@@ -8,6 +8,18 @@ public class UserDto {
 	private String lastName;
 	private String zip;
 	private String stateName;
+	
+	public UserDto(Integer userid, String address, String city, String firstName, String lastName, String zip,
+			String stateName) {
+		super();
+		this.userid = userid;
+		this.address = address;
+		this.city = city;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.zip = zip;
+		this.stateName = stateName;
+	}
 	public Integer getUserid() {
 		return userid;
 	}

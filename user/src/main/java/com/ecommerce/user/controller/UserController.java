@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ecommerce.user.dto.UserDto;
 import com.ecommerce.user.service.UserService;
 
 @RestController
@@ -36,7 +37,12 @@ public class UserController {
 	@GetMapping("/users/{userId}")
 	ResponseEntity<?> getUserById(@PathVariable Integer userId){
 		try {
-			return new ResponseEntity<>(userService.getUserById(userId), HttpStatus.OK);
+			UserDto user = userService.getUserById(userId);
+			if(null != user) {
+				return new ResponseEntity<>(user, HttpStatus.OK);
+			}else {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(TECHNICAL_ERROR, HttpStatus.INTERNAL_SERVER_ERROR);

@@ -1,5 +1,8 @@
 package com.ecommerce.user.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto {
 	private Integer userid;
 	private String address;
@@ -8,6 +11,10 @@ public class UserDto {
 	private String lastName;
 	private String zip;
 	private String stateName;
+	private String passwordUser;
+	private String country;
+	private String emailAddress;
+	private String phoneNumber;
 	
 	public UserDto(Integer userid, String address, String city, String firstName, String lastName, String zip,
 			String stateName) {
@@ -62,5 +69,30 @@ public class UserDto {
 	public void setStateName(String stateName) {
 		this.stateName = stateName;
 	}
+	public String getPasswordUser() {
+		return passwordUser;
+	}
+	public void setPasswordUser(String passwordUser) {
+		this.passwordUser = passwordUser;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
 	
 }

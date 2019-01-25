@@ -11,8 +11,8 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name="shopping_cart_items")
-@NamedQuery(name="ShoppingCartItems.findAll", query="SELECT s FROM ShoppingCartItems s")
-public class ShoppingCartItems implements Serializable {
+@NamedQuery(name="ShoppingCartItem.findAll", query="SELECT s FROM ShoppingCartItem s")
+public class ShoppingCartItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,12 +32,12 @@ public class ShoppingCartItems implements Serializable {
 	@Column(name="unit_price", nullable=false)
 	private double unitPrice;
 
-	//bi-directional many-to-one association to Users
+	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="sci_userid")
-	private Users user;
+	private User user;
 
-	public ShoppingCartItems() {
+	public ShoppingCartItem() {
 	}
 
 	public Integer getShoppingCartId() {
@@ -80,11 +80,11 @@ public class ShoppingCartItems implements Serializable {
 		this.unitPrice = unitPrice;
 	}
 
-	public Users getUser() {
+	public User getUser() {
 		return this.user;
 	}
 
-	public void setUser(Users user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 

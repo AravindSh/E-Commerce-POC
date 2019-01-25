@@ -1,4 +1,4 @@
-package com.ecommerce.user.entity;
+package ecommerce;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -11,8 +11,8 @@ import java.util.List;
  */
 @Entity
 @Table(name="order_details")
-@NamedQuery(name="OrderDetails.findAll", query="SELECT o FROM OrderDetails o")
-public class OrderDetails implements Serializable {
+@NamedQuery(name="OrderDetail.findAll", query="SELECT o FROM OrderDetail o")
+public class OrderDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -42,16 +42,16 @@ public class OrderDetails implements Serializable {
 	@JoinColumn(name="rcv_state")
 	private StateTax stateTax;
 
-	//bi-directional many-to-one association to Users
+	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="od_userid")
-	private Users user;
+	private User user;
 
 	//bi-directional many-to-one association to PurchaseHistory
 	@OneToMany(mappedBy="orderDetail")
 	private List<PurchaseHistory> purchaseHistories;
 
-	public OrderDetails() {
+	public OrderDetail() {
 	}
 
 	public Integer getOrderId() {
@@ -110,11 +110,11 @@ public class OrderDetails implements Serializable {
 		this.stateTax = stateTax;
 	}
 
-	public Users getUser() {
+	public User getUser() {
 		return this.user;
 	}
 
-	public void setUser(Users user) {
+	public void setUser(User user) {
 		this.user = user;
 	}
 

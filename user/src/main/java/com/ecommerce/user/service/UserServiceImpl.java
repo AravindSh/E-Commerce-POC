@@ -16,6 +16,11 @@ public class UserServiceImpl implements UserService{
 	public UserDto getUserById(Integer userId) {
 		return userDao.getUserById(userId);
 	}
+
+	@Override
+	public UserDto saveUser(UserDto userDto) throws Exception {
+		return userDao.saveUser(userDto);
+	}
 	
 	
 

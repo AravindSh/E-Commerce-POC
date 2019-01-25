@@ -30,10 +30,10 @@ public class PurchaseHistory implements Serializable {
 	@Column(nullable=false)
 	private Integer quantity;
 
-	//bi-directional many-to-one association to OrderDetails
+	//bi-directional many-to-one association to OrderDetail
 	@ManyToOne
 	@JoinColumn(name="ph_order_id")
-	private OrderDetails orderDetail;
+	private OrderDetail orderDetail;
 
 	public PurchaseHistory() {
 	}
@@ -70,11 +70,11 @@ public class PurchaseHistory implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public OrderDetails getOrderDetail() {
+	public OrderDetail getOrderDetail() {
 		return this.orderDetail;
 	}
 
-	public void setOrderDetail(OrderDetails orderDetail) {
+	public void setOrderDetail(OrderDetail orderDetail) {
 		this.orderDetail = orderDetail;
 	}
 

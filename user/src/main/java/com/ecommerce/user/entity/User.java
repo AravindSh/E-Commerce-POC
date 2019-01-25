@@ -1,7 +1,10 @@
-package ecommerce;
+package com.ecommerce.user.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.ecommerce.user.dto.UserDto;
+
 import java.util.List;
 
 
@@ -11,8 +14,14 @@ import java.util.List;
  */
 @Entity
 @Table(name="users")
-@NamedQuery(name="Users.findAll", query="SELECT u FROM Users u")
-public class Users implements Serializable {
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+@NamedNativeQuery(name = "User.getUserById", query = "SELECT userid, address, city, first_name, last_name, zip, state FROM users WHERE userid=:userid", 
+					resultSetMapping = "UserDtoMappings")
+@SqlResultSetMapping(name = "UserDtoMappings", classes = @ConstructorResult(targetClass = UserDto.class, columns = {
+		@ColumnResult(name = "userid"), @ColumnResult(name = "address"), @ColumnResult(name = "city"),
+		@ColumnResult(name = "first_name"), @ColumnResult(name = "last_name"), @ColumnResult(name = "zip"),
+		@ColumnResult(name = "state") }))
+public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -47,20 +56,20 @@ public class Users implements Serializable {
 	@Column(nullable=false, length=6)
 	private String zip;
 
-	//bi-directional many-to-one association to OrderDetails
+	//bi-directional many-to-one association to OrderDetail
 	@OneToMany(mappedBy="user")
-	private List<OrderDetails> orderDetails;
+	private List<OrderDetail> orderDetails;
 
-	//bi-directional many-to-one association to ShoppingCartItems
+	//bi-directional many-to-one association to ShoppingCartItem
 	@OneToMany(mappedBy="user")
-	private List<ShoppingCartItems> shoppingCartItems;
+	private List<ShoppingCartItem> shoppingCartItems;
 
 	//bi-directional many-to-one association to StateTax
 	@ManyToOne
 	@JoinColumn(name="state", nullable=false)
 	private StateTax stateTax;
 
-	public Users() {
+	public User() {
 	}
 
 	public Integer getUserid() {
@@ -143,44 +152,44 @@ public class Users implements Serializable {
 		this.zip = zip;
 	}
 
-	public List<OrderDetails> getOrderDetails() {
+	public List<OrderDetail> getOrderDetails() {
 		return this.orderDetails;
 	}
 
-	public void setOrderDetails(List<OrderDetails> orderDetails) {
+	public void setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
 
-	public OrderDetails addOrderDetail(OrderDetails orderDetail) {
+	public OrderDetail addOrderDetail(OrderDetail orderDetail) {
 		getOrderDetails().add(orderDetail);
 		orderDetail.setUser(this);
 
 		return orderDetail;
 	}
 
-	public OrderDetails removeOrderDetail(OrderDetails orderDetail) {
+	public OrderDetail removeOrderDetail(OrderDetail orderDetail) {
 		getOrderDetails().remove(orderDetail);
 		orderDetail.setUser(null);
 
 		return orderDetail;
 	}
 
-	public List<ShoppingCartItems> getShoppingCartItems() {
+	public List<ShoppingCartItem> getShoppingCartItems() {
 		return this.shoppingCartItems;
 	}
 
-	public void setShoppingCartItems(List<ShoppingCartItems> shoppingCartItems) {
+	public void setShoppingCartItems(List<ShoppingCartItem> shoppingCartItems) {
 		this.shoppingCartItems = shoppingCartItems;
 	}
 
-	public ShoppingCartItems addShoppingCartItem(ShoppingCartItems shoppingCartItem) {
+	public ShoppingCartItem addShoppingCartItem(ShoppingCartItem shoppingCartItem) {
 		getShoppingCartItems().add(shoppingCartItem);
 		shoppingCartItem.setUser(this);
 
 		return shoppingCartItem;
 	}
 
-	public ShoppingCartItems removeShoppingCartItem(ShoppingCartItems shoppingCartItem) {
+	public ShoppingCartItem removeShoppingCartItem(ShoppingCartItem shoppingCartItem) {
 		getShoppingCartItems().remove(shoppingCartItem);
 		shoppingCartItem.setUser(null);
 

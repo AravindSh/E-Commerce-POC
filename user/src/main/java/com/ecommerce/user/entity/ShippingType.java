@@ -26,9 +26,9 @@ public class ShippingType implements Serializable {
 	@Column(nullable=false)
 	private double price;
 
-	//bi-directional many-to-one association to OrderDetails
+	//bi-directional many-to-one association to OrderDetail
 	@OneToMany(mappedBy="shippingType")
-	private List<OrderDetails> orderDetails;
+	private List<OrderDetail> orderDetails;
 
 	public ShippingType() {
 	}
@@ -57,22 +57,22 @@ public class ShippingType implements Serializable {
 		this.price = price;
 	}
 
-	public List<OrderDetails> getOrderDetails() {
+	public List<OrderDetail> getOrderDetails() {
 		return this.orderDetails;
 	}
 
-	public void setOrderDetails(List<OrderDetails> orderDetails) {
+	public void setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
 
-	public OrderDetails addOrderDetail(OrderDetails orderDetail) {
+	public OrderDetail addOrderDetail(OrderDetail orderDetail) {
 		getOrderDetails().add(orderDetail);
 		orderDetail.setShippingType(this);
 
 		return orderDetail;
 	}
 
-	public OrderDetails removeOrderDetail(OrderDetails orderDetail) {
+	public OrderDetail removeOrderDetail(OrderDetail orderDetail) {
 		getOrderDetails().remove(orderDetail);
 		orderDetail.setShippingType(null);
 

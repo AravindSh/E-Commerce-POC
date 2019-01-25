@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ecommerce.user.dto.UserDto;
 import com.ecommerce.user.entity.StateTax;
-import com.ecommerce.user.entity.Users;
+import com.ecommerce.user.entity.User;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -26,7 +26,7 @@ public class UserDaoImpl implements UserDao{
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			resultList = (UserDto)session.getNamedNativeQuery("Users.getUserById").setParameter("userid", userId).getSingleResult();
+			resultList = (UserDto)session.getNamedNativeQuery("User.getUserById").setParameter("userid", userId).getSingleResult();
 			tx.commit();
 		}catch(Exception e) {
 			if (tx!=null) tx.rollback();
@@ -37,17 +37,18 @@ public class UserDaoImpl implements UserDao{
 		return resultList;
 	}
 	
+	@Override
 	public UserDto saveUser(UserDto userDto) throws Exception {
 		
 		Session sess = sessionFactory.openSession();
 		Transaction tx = null;
 		try {
 			tx = sess.beginTransaction();
-			//do some work
 			StateTax stateTax = sess.load(StateTax.class, userDto.getStateName());
-			Users users = userDtoToUsers(userDto, stateTax);
-
+			Integer id  = (Integer)sess.save(userDtoToUsers(userDto, stateTax));
+			User user = sess.get(User.class, id);
 			tx.commit();
+			return userToUserDto(user);
 		}
 		catch (Exception e) {
 			if (tx!=null) tx.rollback();
@@ -56,24 +57,36 @@ public class UserDaoImpl implements UserDao{
 		finally {
 			sess.close();
 		}
-
-
-		return null;
 	}
 
-	private Users userDtoToUsers(UserDto userDto, StateTax stateTax) throws NoSuchAlgorithmException {
-		Users users = new Users();
-		users.setAddress(userDto.getAddress());
-		users.setCity(userDto.getCity());
-		users.setFirstName(userDto.getFirstName());
-		users.setLastName(userDto.getLastName());
-		users.setZip(userDto.getZip());
-		users.setStateTax(stateTax);
-		users.setPasswordUser(getHash(userDto.getPasswordUser()));
-		users.setCountry(userDto.getCountry());
-		users.setEmailAddress(userDto.getEmailAddress());
-		users.setPhoneNumber(userDto.getPhoneNumber());
-		return users;
+	private UserDto userToUserDto(User user) {
+		UserDto userDto = new UserDto();
+		userDto.setUserid(user.getUserid());
+		userDto.setAddress(user.getAddress());
+		userDto.setCity(user.getCity());
+		userDto.setFirstName(user.getFirstName());
+		userDto.setLastName(user.getLastName());
+		userDto.setZip(user.getZip());
+		userDto.setStateName(user.getStateTax().getStateName());
+		userDto.setCountry(user.getCountry());
+		userDto.setEmailAddress(user.getEmailAddress());
+		userDto.setPhoneNumber(user.getPhoneNumber());
+		return userDto;
+	}
+
+	private User userDtoToUsers(UserDto userDto, StateTax stateTax) throws NoSuchAlgorithmException {
+		User user = new User();
+		user.setAddress(userDto.getAddress());
+		user.setCity(userDto.getCity());
+		user.setFirstName(userDto.getFirstName());
+		user.setLastName(userDto.getLastName());
+		user.setZip(userDto.getZip());
+		user.setStateTax(stateTax);
+		user.setPasswordUser(getHash(userDto.getPasswordUser()));
+		user.setCountry(userDto.getCountry());
+		user.setEmailAddress(userDto.getEmailAddress());
+		user.setPhoneNumber(userDto.getPhoneNumber());
+		return user;
 	}
 
 	private String getHash(String passwordUser) throws NoSuchAlgorithmException {

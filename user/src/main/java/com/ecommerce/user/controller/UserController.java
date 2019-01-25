@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecommerce.user.dto.UserDto;
@@ -45,6 +47,21 @@ public class UserController {
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
+			return new ResponseEntity<>(TECHNICAL_ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@PostMapping("/users")
+	ResponseEntity<?> saveUser(@RequestBody UserDto userDto){
+		try {
+			UserDto user = userService.saveUser(userDto);
+			if(null != user) {
+				return new ResponseEntity<>(user,  HttpStatus.CREATED);
+			}else {
+				return new ResponseEntity<>("Failed to Save", HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
 			return new ResponseEntity<>(TECHNICAL_ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}

@@ -23,13 +23,13 @@ public class StateTax implements Serializable {
 	@Column(name="sales_tax_rate", nullable=false)
 	private double salesTaxRate;
 
-	//bi-directional many-to-one association to OrderDetails
+	//bi-directional many-to-one association to OrderDetail
 	@OneToMany(mappedBy="stateTax")
-	private List<OrderDetails> orderDetails;
+	private List<OrderDetail> orderDetails;
 
-	//bi-directional many-to-one association to Users
+	//bi-directional many-to-one association to User
 	@OneToMany(mappedBy="stateTax")
-	private List<Users> users;
+	private List<User> users;
 
 	public StateTax() {
 	}
@@ -50,44 +50,44 @@ public class StateTax implements Serializable {
 		this.salesTaxRate = salesTaxRate;
 	}
 
-	public List<OrderDetails> getOrderDetails() {
+	public List<OrderDetail> getOrderDetails() {
 		return this.orderDetails;
 	}
 
-	public void setOrderDetails(List<OrderDetails> orderDetails) {
+	public void setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
 
-	public OrderDetails addOrderDetail(OrderDetails orderDetail) {
+	public OrderDetail addOrderDetail(OrderDetail orderDetail) {
 		getOrderDetails().add(orderDetail);
 		orderDetail.setStateTax(this);
 
 		return orderDetail;
 	}
 
-	public OrderDetails removeOrderDetail(OrderDetails orderDetail) {
+	public OrderDetail removeOrderDetail(OrderDetail orderDetail) {
 		getOrderDetails().remove(orderDetail);
 		orderDetail.setStateTax(null);
 
 		return orderDetail;
 	}
 
-	public List<Users> getUsers() {
+	public List<User> getUsers() {
 		return this.users;
 	}
 
-	public void setUsers(List<Users> users) {
+	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 
-	public Users addUser(Users user) {
+	public User addUser(User user) {
 		getUsers().add(user);
 		user.setStateTax(this);
 
 		return user;
 	}
 
-	public Users removeUser(Users user) {
+	public User removeUser(User user) {
 		getUsers().remove(user);
 		user.setStateTax(null);
 

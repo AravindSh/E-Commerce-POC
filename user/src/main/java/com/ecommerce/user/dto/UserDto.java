@@ -16,6 +16,8 @@ public class UserDto {
 	private String emailAddress;
 	private String phoneNumber;
 	
+	public UserDto() {}
+	
 	public UserDto(Integer userid, String address, String city, String firstName, String lastName, String zip,
 			String stateName) {
 		super();

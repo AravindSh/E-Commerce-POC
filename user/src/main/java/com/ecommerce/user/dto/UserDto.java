@@ -19,7 +19,7 @@ public class UserDto {
 	public UserDto() {}
 	
 	public UserDto(Integer userid, String address, String city, String firstName, String lastName, String zip,
-			String stateName) {
+			String stateName, String country, String emailAddress, String phoneNumber) {
 		super();
 		this.userid = userid;
 		this.address = address;
@@ -28,6 +28,9 @@ public class UserDto {
 		this.lastName = lastName;
 		this.zip = zip;
 		this.stateName = stateName;
+		this.country = country;
+		this.emailAddress = emailAddress;
+		this.phoneNumber = phoneNumber;
 	}
 	public Integer getUserid() {
 		return userid;

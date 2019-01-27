@@ -86,5 +86,22 @@ public class UserController {
 			return new ResponseEntity<>(TECHNICAL_ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	@PostMapping("/login")
+	ResponseEntity<?> loginUser(@RequestBody UserDto userDto){
+		try {
+			boolean loginSuccess = userService.loginUser(userDto);
+			if(loginSuccess) {
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			}
+			else {
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			return new ResponseEntity<>(TECHNICAL_ERROR, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
 }

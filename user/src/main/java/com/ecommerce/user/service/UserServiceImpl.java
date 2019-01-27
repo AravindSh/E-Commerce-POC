@@ -23,8 +23,14 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public UserDto updateUser(UserDto userDto) throws Exception {
+	public UserDto updateUser(UserDto userDto) {
 		return userDao.updateUser(userDto);
+		
+	}
+
+	@Override
+	public boolean loginUser(UserDto userDto) throws Exception {
+		return userDao.loginUser(userDto);
 		
 	}
 	

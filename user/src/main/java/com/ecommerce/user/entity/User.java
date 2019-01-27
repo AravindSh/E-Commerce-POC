@@ -15,13 +15,14 @@ import java.util.List;
 @Entity
 @Table(name="users")
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-@NamedNativeQuery(name = "User.getUserById", query = "SELECT userid, address, city, first_name, last_name, zip, state, country, email_address, phone_number FROM users WHERE userid=:userid", 
-					resultSetMapping = "UserDtoMappings")
+@NamedNativeQuery(name = "User.getUserById", query = "SELECT userid, address, city, first_name, last_name, zip, state, country, email_address, phone_number "
+														+ "FROM users WHERE userid=:userid", resultSetMapping = "UserDtoMappings")
 @SqlResultSetMapping(name = "UserDtoMappings", classes = @ConstructorResult(targetClass = UserDto.class, columns = {
 		@ColumnResult(name = "userid"), @ColumnResult(name = "address"), @ColumnResult(name = "city"),
 		@ColumnResult(name = "first_name"), @ColumnResult(name = "last_name"), @ColumnResult(name = "zip"),
 		@ColumnResult(name = "state"), @ColumnResult(name = "country"), @ColumnResult(name = "email_address"), 
 		@ColumnResult(name = "phone_number") }))
+@NamedNativeQuery(name = "User.getUserPasswordByEmail", query = "SELECT password_user FROM users WHERE email_address=:email_address")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 

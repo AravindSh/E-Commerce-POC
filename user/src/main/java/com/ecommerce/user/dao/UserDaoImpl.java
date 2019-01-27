@@ -65,7 +65,7 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Override
-	public UserDto updateUser(UserDto userDto) throws Exception{
+	public UserDto updateUser(UserDto userDto) {
 		Session sess = sessionFactory.openSession();
 		Transaction tx = null;
 		try {
@@ -92,6 +92,31 @@ public class UserDaoImpl implements UserDao{
 			sess.close();
 		}
 	}
+	
+	@Override
+	public boolean loginUser(UserDto userDto) throws Exception {
+		boolean authenticated = false;
+		Session sess = sessionFactory.openSession();
+		Transaction tx= null;
+		try {
+			tx = sess.beginTransaction();
+			String passwordDb = (String)sess.createNamedQuery("User.getUserPasswordByEmail")
+					.setParameter("email_address", userDto.getEmailAddress()).getSingleResult();
+			
+			if(passwordDb.equalsIgnoreCase(getHash(userDto.getPasswordUser()))) {
+				authenticated = true;
+			}
+			tx.commit();
+			return authenticated;
+		}
+		catch (Exception e) {
+			if (tx!=null) tx.rollback();
+			throw e;
+		}
+		finally {
+			sess.close();
+		}
+	}
 
 	private UserDto userToUserDto(User user) {
 		UserDto userDto = new UserDto();
@@ -108,7 +133,7 @@ public class UserDaoImpl implements UserDao{
 		return userDto;
 	}
 
-	private User userDtoToUsersUpdate(UserDto userDto, StateTax stateTax, User user) throws NoSuchAlgorithmException {
+	private User userDtoToUsersUpdate(UserDto userDto, StateTax stateTax, User user) {
 		if(null != userDto.getAddress()) {
 			user.setAddress(userDto.getAddress());
 		}

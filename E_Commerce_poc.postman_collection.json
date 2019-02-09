@@ -1,0 +1,677 @@
+{
+	"info": {
+		"_postman_id": "d8f9dad1-48e6-45c3-b233-c88da21a6141",
+		"name": "E_Commerce_poc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Config_Server",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8001/application/default",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"application",
+						"default"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server_Refresh",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8001/actuator/bus-refresh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"actuator",
+						"bus-refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin_get_All_Products_By_Type",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/products?type=books",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "books"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin_delete_product_by_id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/products/5c42ea7c9948f075225ff441",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"products",
+						"5c42ea7c9948f075225ff441"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin_get_product_by_id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/products/5c3c45be9948f01bb4264aa7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"products",
+						"5c3c45be9948f01bb4264aa7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin_save_product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"quantity\": 60,\n\t\"unitPrice\": 600,\n\t\"type\": \"books\",\n\t\"bookDetails\": {\n\t\t\"bookName\": \"PYTHON\",\n\t\t\"author\": \"PYTHON AUTHOR\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/products/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin_modify_product",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "eccd9a6b-460b-4b99-8dc2-07daf88ca11f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\"quantity\": 33,\n\t\"unitPrice\": 333\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/products/5c3c45be9948f01bb4264aa7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"products",
+						"5c3c45be9948f01bb4264aa7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin_ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9000/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9100/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9100",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_get_By_Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9100/users/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9100",
+					"path": [
+						"users",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_save",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address\": \"CMC Colony\",\n    \"city\": \"Vellore\",\n    \"firstName\": \"Suresh\",\n    \"lastName\": \"Gowri\",\n    \"zip\": \"632009\",\n    \"stateName\": \"Tamil Nadu\",\n    \"passwordUser\": \"Suresh1234\",\n    \"country\": \"India\",\n    \"emailAddress\": \"Suresh@gmail\",\n    \"phoneNumber\": \"9009876091\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9100/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9100",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "d177d325-dfd7-485b-be92-cc799a0c78ac",
+					"name": "user_save_aravind",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"kolkata 700043\",\n    \"city\": \"kolkata\",\n    \"firstName\": \"Aravind\",\n    \"lastName\": \"Sharma\",\n    \"zip\": \"700043\",\n    \"stateName\": \"West Bengal\",\n    \"passwordUser\": \"Aravind1234\",\n    \"country\": \"India\",\n    \"emailAddress\": \"aravind@gmail.com\",\n    \"phoneNumber\": \"9090908765\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9100/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9100",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 25 Jan 2019 18:19:52 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"name": "Transfer-Encoding",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"body": "{\"userid\":6,\"address\":\"kolkata 700043\",\"city\":\"kolkata\",\"firstName\":\"Aravind\",\"lastName\":\"Sharma\",\"zip\":\"700043\",\"stateName\":\"West Bengal\",\"country\":\"India\",\"emailAddress\":\"aravind@gmail.com\",\"phoneNumber\":\"9090908765\"}"
+				},
+				{
+					"id": "de0c1acf-e83e-4dca-8add-5682f300726c",
+					"name": "user_save_nesar",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"B-1/11, 2nd Floor, Mohan Co-op. Industrial Estate, Mathura Road\",\n    \"city\": \"New Delhi\",\n    \"firstName\": \"Nesar\",\n    \"lastName\": \"MN\",\n    \"zip\": \"110044\",\n    \"stateName\": \"UP\",\n    \"passwordUser\": \"Nesar1234\",\n    \"country\": \"India\",\n    \"emailAddress\": \"Nesar@gmail\",\n    \"phoneNumber\": \"8976503885\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9100/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9100",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 26 Jan 2019 05:58:36 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"name": "Transfer-Encoding",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"body": "{\"userid\":9,\"address\":\"B-1/11, 2nd Floor, Mohan Co-op. Industrial Estate, Mathura Road\",\"city\":\"New Delhi\",\"firstName\":\"Nesar\",\"lastName\":\"MN\",\"zip\":\"110044\",\"stateName\":\"UP\",\"country\":\"India\",\"emailAddress\":\"Nesar@gmail\",\"phoneNumber\":\"8976503885\"}"
+				},
+				{
+					"id": "f3eac203-7e40-43b0-a3fd-04946a40bc03",
+					"name": "user_save_nabeel",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"Edappal\",\n    \"city\": \"Malappuram\",\n    \"firstName\": \"Nabeel\",\n    \"lastName\": \"Kabeer\",\n    \"zip\": \"679576\",\n    \"stateName\": \"Kerala\",\n    \"passwordUser\": \"Nabeel1234\",\n    \"country\": \"India\",\n    \"emailAddress\": \"Nabeel@gmail\",\n    \"phoneNumber\": \"7865432109\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9100/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9100",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 26 Jan 2019 06:25:30 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"name": "Transfer-Encoding",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"body": "{\"userid\":10,\"address\":\"Edappal\",\"city\":\"Malappuram\",\"firstName\":\"Nabeel\",\"lastName\":\"Kabeer\",\"zip\":\"679576\",\"stateName\":\"Kerala\",\"country\":\"India\",\"emailAddress\":\"Nabeel@gmail\",\"phoneNumber\":\"7865432109\"}"
+				},
+				{
+					"id": "f30c0421-4167-49e0-9f9c-7c49efa608ee",
+					"name": "user_save_suparna",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"marathahalli\",\n    \"city\": \"bangalore\",\n    \"firstName\": \"Suparna\",\n    \"lastName\": \"Kusre\",\n    \"zip\": \"576809\",\n    \"stateName\": \"Karnataka\",\n    \"passwordUser\": \"Suparna1234\",\n    \"country\": \"India\",\n    \"emailAddress\": \"Suparna@gmail\",\n    \"phoneNumber\": \"9876756012\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9100/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9100",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 26 Jan 2019 05:38:00 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"name": "Transfer-Encoding",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"userid\": 8,\n    \"address\": \"marathahalli\",\n    \"city\": \"bangalore\",\n    \"firstName\": \"Suparna\",\n    \"lastName\": \"Kusre\",\n    \"zip\": \"576809\",\n    \"stateName\": \"Karnataka\",\n    \"country\": \"India\",\n    \"emailAddress\": \"Suparna@gmail\",\n    \"phoneNumber\": \"9876756012\"\n}"
+				},
+				{
+					"id": "3374f939-5c74-46ff-87c1-e8359eb457bb",
+					"name": "user_save_suresh",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"CMC Colony\",\n    \"city\": \"Vellore\",\n    \"firstName\": \"Suresh\",\n    \"lastName\": \"Gowri\",\n    \"zip\": \"632009\",\n    \"stateName\": \"Tamil Nadu\",\n    \"passwordUser\": \"Suresh1234\",\n    \"country\": \"India\",\n    \"emailAddress\": \"Suresh@gmail\",\n    \"phoneNumber\": \"9009876091\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9100/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9100",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 26 Jan 2019 06:28:30 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"name": "Transfer-Encoding",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"body": "{\"userid\":11,\"address\":\"CMC Colony\",\"city\":\"Vellore\",\"firstName\":\"Suresh\",\"lastName\":\"Gowri\",\"zip\":\"632009\",\"stateName\":\"Tamil Nadu\",\"country\":\"India\",\"emailAddress\":\"Suresh@gmail\",\"phoneNumber\":\"9009876091\"}"
+				},
+				{
+					"id": "99380170-bae6-4b80-89e4-64cfac1c34d4",
+					"name": "user_save_sanjeet",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"baiyappanahalli\",\n    \"city\": \"bangalore\",\n    \"firstName\": \"Sanjeet\",\n    \"lastName\": \"Gaglani\",\n    \"zip\": \"570076\",\n    \"stateName\": \"Karnataka\",\n    \"passwordUser\": \"Sanjeet1234\",\n    \"country\": \"India\",\n    \"emailAddress\": \"Sanjeet@gmail.com\",\n    \"phoneNumber\": \"8786543234\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9100/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9100",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 25 Jan 2019 18:19:52 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"name": "Transfer-Encoding",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"userid\": 7,\n    \"address\": \"baiyappanahalli\",\n    \"city\": \"bangalore\",\n    \"firstName\": \"Sanjeet\",\n    \"lastName\": \"Gaglani\",\n    \"zip\": \"570076\",\n    \"stateName\": \"Karnataka\",\n    \"country\": \"India\",\n    \"emailAddress\": \"Sanjeet@gmail.com\",\n    \"phoneNumber\": \"8786543234\"\n}"
+				}
+			]
+		},
+		{
+			"name": "user_update_by_id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address\": \"behala\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9100/users/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9100",
+					"path": [
+						"users",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t \"emailAddress\": \"Nabeel@gmail\",\n\t \"passwordUser\": \"Nabeel1234\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9100/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9100",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin_ping_replica",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9001/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

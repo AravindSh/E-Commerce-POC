@@ -1,0 +1,36 @@
+cd configServer/
+mvn clean package -Dmaven.test.skip=true
+java -jar ./target/configServer-0.0.1-SNAPSHOT.jar
+
+
+cd eurekaServer/
+mvn clean package -Dmaven.test.skip=true
+java -jar -Dspring.profiles.active=primary ./target/eurekaServer-0.0.1-SNAPSHOT.jar
+
+
+cd eurekaServer/
+java -jar -Dspring.profiles.active=secondary ./target/eurekaServer-0.0.1-SNAPSHOT.jar
+
+
+cd admin/
+mvn clean package -Dmaven.test.skip=true
+java -jar ./target/admin-0.0.1-SNAPSHOT.jar
+
+
+cd admin/
+java -jar -Dspring.profiles.active=replica ./target/admin-0.0.1-SNAPSHOT.jar
+
+
+cd user/
+mvn clean package -Dmaven.test.skip=true
+java -jar ./target/user-0.0.1-SNAPSHOT.jar
+
+
+
+
+
+
+
+
+
+

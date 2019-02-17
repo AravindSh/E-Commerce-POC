@@ -1,5 +1,5 @@
 # E-Commerce-POC
-E commerce microservices backend POC using spring cloud
+E-Commerce Microservices Backend POC using Spring Cloud
 
 
 ## Build & Run from Source

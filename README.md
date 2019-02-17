@@ -8,8 +8,8 @@ E commerce microservices backend POC using spring cloud
 * __PostgreSQL Setup__ : 
    * Host: localhost
    * Port: 5432
-   * Database Name: "postgres"
-   * Schema Name: "public" 
+   * Database: postgres
+   * Schema: public
    * [DDL](https://github.com/AravindSh/E-Commerce-POC/blob/master/etc/Postgres_Scripts/create_alter.sql)
    * [Sample Data](https://github.com/AravindSh/E-Commerce-POC/blob/master/etc/Postgres_Scripts/insert.sql)
 * __MongoDB Setup__ :

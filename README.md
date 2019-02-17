@@ -24,3 +24,22 @@ E commerce microservices backend POC using spring cloud
         mvn clean package -Dmaven.test.skip=true
         java -jar ./target/mongodbDataInit-0.0.1-SNAPSHOT.jar
         ```
+* __Run Config Server__ :
+   ```shell
+   cd configServer/
+   mvn clean package -Dmaven.test.skip=true
+   java -jar ./target/configServer-0.0.1-SNAPSHOT.jar
+   ```
+* __Run Eureka Server__ :
+   * Primary Profile
+     ```shell
+     cd eurekaServer/
+     mvn clean package -Dmaven.test.skip=true
+     java -jar -Dspring.profiles.active=primary ./target/eurekaServer-0.0.1-SNAPSHOT.jar
+     ```
+   * Secondary Profile
+     ```shell
+     cd eurekaServer/
+     java -jar -Dspring.profiles.active=secondary ./target/eurekaServer-0.0.1-SNAPSHOT.jar
+     ```
+     

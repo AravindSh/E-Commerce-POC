@@ -17,4 +17,9 @@ E commerce microservices backend POC using spring cloud
    * Port: 27017
    * Database: e_commerce_db
    * Collection: product_catalog
-   
+   * Sample Data: Open a terminal/cmd and enter the following commands
+      ```shell
+      cd ./etc/mongodbDataInit/
+      mvn clean package -Dmaven.test.skip=true
+      java -jar ./target/mongodbDataInit-0.0.1-SNAPSHOT.jar
+      ```

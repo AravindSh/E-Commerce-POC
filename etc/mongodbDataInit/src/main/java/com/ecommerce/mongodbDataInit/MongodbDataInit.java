@@ -14,25 +14,25 @@ import com.mongodb.client.MongoDatabase;
  * Hello world!
  *
  */
-public class MongodbDataInit 
+public class MongodbDataInit
 {
 	private static MongoClient mongoClient = null;
-	
+
 	private static void entrySetup() {
 		mongoClient = new MongoClient("localhost", 27017);
 	}
-	
+
 	private static void exitSetup() {
 		mongoClient.close();
 	}
-	
-		
+
+
     public static void main( String[] args )
     {
     	entrySetup();
     	MongoDatabase database = mongoClient.getDatabase("e_commerce_db");
 		MongoCollection<Document> productCatalogCollection = database.getCollection("product_catalog");
-		//initProductCatalog(productCatalogCollection);
+		initProductCatalog(productCatalogCollection);
     	displayProductCatalog(productCatalogCollection);
     	exitSetup();
     }

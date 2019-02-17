@@ -42,4 +42,22 @@ E commerce microservices backend POC using spring cloud
      cd eurekaServer/
      java -jar -Dspring.profiles.active=secondary ./target/eurekaServer-0.0.1-SNAPSHOT.jar
      ```
+* __Run Admin Microservice__ :
+   * Default Profile
+     ```shell
+     cd admin/
+     mvn clean package -Dmaven.test.skip=true
+     java -jar ./target/admin-0.0.1-SNAPSHOT.jar
+     ```
+   * Replica Profile
+     ```shell
+     cd admin/
+     java -jar -Dspring.profiles.active=replica ./target/admin-0.0.1-SNAPSHOT.jar
+     ```
+* __Run User Microservice__ :
+   ```shell
+   cd user/
+   mvn clean package -Dmaven.test.skip=true
+   java -jar ./target/user-0.0.1-SNAPSHOT.jar
+   ```
      

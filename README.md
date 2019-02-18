@@ -38,8 +38,6 @@ E-Commerce Microservices Backend POC using Spring Cloud
      java -jar -Dspring.profiles.active=primary ./target/eurekaServer-0.0.1-SNAPSHOT.jar
      ```
    * Secondary Profile
-* __Testing Endpoints__ :
-   * Download Postman Http Client and import [postman collection](https://github.com/AravindSh/E-Commerce-POC/blob/master/etc/E_Commerce_poc.postman_collection.json)
      ```shell
      cd eurekaServer/
      java -jar -Dspring.profiles.active=secondary ./target/eurekaServer-0.0.1-SNAPSHOT.jar
@@ -62,4 +60,5 @@ E-Commerce Microservices Backend POC using Spring Cloud
    mvn clean package -Dmaven.test.skip=true
    java -jar ./target/user-0.0.1-SNAPSHOT.jar
    ```
-     
+* __Testing Endpoints__ :
+   * Download Postman Http Client and import [postman collection](https://github.com/AravindSh/E-Commerce-POC/blob/master/etc/E_Commerce_poc.postman_collection.json)     

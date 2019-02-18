@@ -61,4 +61,4 @@ E-Commerce Microservices Backend POC using Spring Cloud
    java -jar ./target/user-0.0.1-SNAPSHOT.jar
    ```
 * __Testing Endpoints__ :
-   Download Postman Http Client and import [postman collection](https://github.com/AravindSh/E-Commerce-POC/blob/master/etc/E_Commerce_poc.postman_collection.json) _OR_ use your favourite rest client and refer this folder for all    endpoint details 
+   Download Postman Rest Client and import [postman collection](https://github.com/AravindSh/E-Commerce-POC/blob/master/etc/E_Commerce_poc.postman_collection.json) _OR_ use your favourite Rest Client and refer this folder for all    endpoint details 

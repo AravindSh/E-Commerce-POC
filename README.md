@@ -8,15 +8,15 @@ E-Commerce Microservices Backend POC using Spring Cloud
 * __PostgreSQL Setup__ : 
    * Host: localhost
    * Port: 5432
-   * Database: postgres
-   * Schema: public
+   * Database Name: postgres
+   * Schema Name: public
    * [DDL Statements](https://github.com/AravindSh/E-Commerce-POC/blob/master/etc/Postgres_Scripts/create_alter.sql)
    * [Insert Statements](https://github.com/AravindSh/E-Commerce-POC/blob/master/etc/Postgres_Scripts/insert.sql)
 * __MongoDB Setup__ :
    * Host: localhost
    * Port: 27017
-   * Database: e_commerce_db
-   * Collection: product_catalog
+   * Database Name: e_commerce_db
+   * Collection Name: product_catalog
    * Create Sample Data: 
         Open a terminal/cmd and enter the following commands
         ```shell

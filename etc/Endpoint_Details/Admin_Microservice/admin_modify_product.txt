@@ -1,0 +1,6 @@
+URL: http://localhost:9000/products/5c3c45be9948f01bb4264aa7
+METHOD: PUT
+BODY:
+{	"quantity": 33,
+	"unitPrice": 333
+}

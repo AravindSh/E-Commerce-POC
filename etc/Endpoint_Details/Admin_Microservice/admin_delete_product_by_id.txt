@@ -1,0 +1,3 @@
+URL: http://localhost:9000/products/5c42ea7c9948f075225ff441
+METHOD: DELETE
+BODY: NA

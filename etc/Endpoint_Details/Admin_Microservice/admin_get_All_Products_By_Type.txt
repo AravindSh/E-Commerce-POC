@@ -1,0 +1,3 @@
+URL: http://localhost:9000/products?type=books
+METHOD: GET
+BODY: NA

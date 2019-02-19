@@ -1,0 +1,6 @@
+URL: http://localhost:9100/users/6
+METHOD: PUT
+BODY:
+{
+    "address": "behala"
+}

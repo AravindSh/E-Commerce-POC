@@ -1,0 +1,15 @@
+URL: http://localhost:9100/users
+METHOD: POST
+BODY:
+{
+    "address": "CMC Colony",
+    "city": "Vellore",
+    "firstName": "Suresh",
+    "lastName": "Gowri",
+    "zip": "632009",
+    "stateName": "Tamil Nadu",
+    "passwordUser": "Suresh1234",
+    "country": "India",
+    "emailAddress": "Suresh@gmail",
+    "phoneNumber": "9009876091"
+}

@@ -1,0 +1,3 @@
+URL: http://localhost:9100/users/6
+METHOD: GET
+BODY: NA

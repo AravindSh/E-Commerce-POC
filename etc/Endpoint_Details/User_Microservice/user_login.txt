@@ -1,0 +1,7 @@
+URL: http://localhost:9100/login
+METHOD: POST
+BODY:
+{
+	 "emailAddress": "Nabeel@gmail",
+	 "passwordUser": "Nabeel1234"
+}

@@ -1,0 +1,3 @@
+URL: http://localhost:8001/application/default
+METHOD: GET
+BODY: NA

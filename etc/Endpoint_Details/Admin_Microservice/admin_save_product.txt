@@ -1,0 +1,12 @@
+URL: http://localhost:9000/products/
+METHOD: POST
+BODY:
+{
+	"quantity": 60,
+	"unitPrice": 600,
+	"type": "books",
+	"bookDetails": {
+		"bookName": "PYTHON",
+		"author": "PYTHON AUTHOR"
+	}
+}

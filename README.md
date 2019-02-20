@@ -18,43 +18,43 @@ E-Commerce Microservices Backend POC using Spring Cloud
    * Database Name: e_commerce_db
    * Collection Name: product_catalog
    * Create Sample Data: 
-        Open a terminal/cmd and enter the following commands
+        Open a new terminal/cmd and enter the following commands
         ```shell
         cd ./etc/mongodbDataInit/
         mvn clean package -Dmaven.test.skip=true
         java -jar ./target/mongodbDataInit-0.0.1-SNAPSHOT.jar
         ```
-* __Run Config Server__ :
+* __Run Config Server__ : Open a new terminal/cmd and enter the following commands
    ```shell
    cd configServer/
    mvn clean package -Dmaven.test.skip=true
    java -jar ./target/configServer-0.0.1-SNAPSHOT.jar
    ```
-* __Run Eureka Server__ :
-   * Primary Profile
+* __Run Eureka Server__ : 
+   * Primary Profile - Open a new terminal/cmd and enter the following commands
      ```shell
      cd eurekaServer/
      mvn clean package -Dmaven.test.skip=true
      java -jar -Dspring.profiles.active=primary ./target/eurekaServer-0.0.1-SNAPSHOT.jar
      ```
-   * Secondary Profile
+   * Secondary Profile - Open a new terminal/cmd and enter the following commands
      ```shell
      cd eurekaServer/
      java -jar -Dspring.profiles.active=secondary ./target/eurekaServer-0.0.1-SNAPSHOT.jar
      ```
 * __Run Admin Microservice__ :
-   * Default Profile
+   * Default Profile - Open a new terminal/cmd and enter the following commands
      ```shell
      cd admin/
      mvn clean package -Dmaven.test.skip=true
      java -jar ./target/admin-0.0.1-SNAPSHOT.jar
      ```
-   * Replica Profile
+   * Replica Profile - Open a new terminal/cmd and enter the following commands
      ```shell
      cd admin/
      java -jar -Dspring.profiles.active=replica ./target/admin-0.0.1-SNAPSHOT.jar
      ```
-* __Run User Microservice__ :
+* __Run User Microservice__ : Open a new terminal/cmd and enter the following commands
    ```shell
    cd user/
    mvn clean package -Dmaven.test.skip=true

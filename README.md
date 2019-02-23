@@ -1,6 +1,8 @@
 # E-Commerce-POC
-E-Commerce Microservices Backend POC using Spring Cloud
+__E-Commerce Microservices Backend POC using Spring Cloud__
 
+## Application Overview
+![High Level Block Diagram](https://github.com/AravindSh/E-Commerce-POC/blob/master/etc/E-Commerce-POC.jpg "High Level Block Diagram")
 
 ## Build & Run from Source
 

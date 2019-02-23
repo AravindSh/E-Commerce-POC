@@ -1,4 +1,0 @@
-zuul:
-  prefix: "/services"
-server:
-  port: 8080

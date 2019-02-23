@@ -3,7 +3,7 @@ __E-Commerce Microservices Backend POC using Spring Cloud__
 
 ![High Level Block Diagram](https://github.com/AravindSh/E-Commerce-POC/blob/master/etc/E-Commerce-POC.jpg "High Level Block Diagram")
 
-* __Eureka Discovery Server__ : Service Registry contains hostname and port of all its client microservices. Clients use     eureka server to communicate with each other.
+* __Eureka Discovery Server__ : Contains hostname and port of all its client microservices. All clients register themselves with eureka server and use it to communicate with each other.
 
 * __Config Server__ : Centralized configuration server which facilitates external configuration. Client Microservices connect to this server to obtain necessary configuration information(eg: database host and port). The configuration file can be backed by a version control system like git.
 

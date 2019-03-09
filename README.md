@@ -9,7 +9,7 @@ __E-Commerce Microservices Backend POC using Spring Cloud__
 
 * __Admin Microservice__ : Serves all the endpoints related to product catalog. Enables administrator of the website to add/update/delete products. MongoDB is used to store product related details.
 
-* __User Microservice__ : Serves all endpoints related to user such as login by email, new user enrolment, editing existing user profile, fetching user profile details. PostgreSQL is used to store user details. Hibernate ORM is used in this microservice to interact with PostgreSQL.
+* __User Microservice__ : Serves all endpoints related to user such as login by email, new user enrolment, editing existing user profile, fetching user profile details. PostgreSQL is used to store user details. Hibernate ORM is used to interact with PostgreSQL.
 
 ## Build & Run from Source
 
